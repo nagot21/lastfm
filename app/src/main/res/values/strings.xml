@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Lastfm</string>
     <string name="search">Search</string>
+    <string name="artists">Artists</string>
+    <string name="albums">Albums</string>
+    <string name="songs">Songs</string>
+    <string name="no_results">No results have been found</string>
 </resources>
