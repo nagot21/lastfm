@@ -7,13 +7,13 @@
 
     <ImageView
         android:id="@+id/no_result_img"
-        android:layout_width="@dimen/padding100"
-        android:layout_height="@dimen/padding100"
+        android:layout_width="@dimen/marge100"
+        android:layout_height="@dimen/marge100"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:layout_margin="@dimen/padding5"
+        android:layout_margin="@dimen/marge5"
         android:src="@drawable/no_result" />
 
     <TextView
@@ -24,6 +24,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/no_result_img"
+        android:layout_marginTop="@dimen/marge10"
         android:gravity="center"
         android:text="@string/no_results" />
 

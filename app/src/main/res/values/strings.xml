@@ -5,4 +5,6 @@
     <string name="albums">Albums</string>
     <string name="songs">Songs</string>
     <string name="no_results">No results have been found</string>
+    <string name="error_occurred">An error has occurred, please try again</string>
+    <string name="error_connection">Check your internet connection and try again</string>
 </resources>

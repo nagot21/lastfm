@@ -28,4 +28,6 @@ public abstract class BaseFragment extends Fragment {
     protected abstract int getFragmentLayout();
 
     protected abstract void setUp(View view);
+
+    protected abstract void search(String search);
 }
