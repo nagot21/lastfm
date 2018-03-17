@@ -67,8 +67,11 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     }
 
     @Override
-    protected void search(String search) {
-
+    public void search(String search) {
+        if (mAdapter != null) {
+            mAdapter.clearItems();
+        }
+        mPresenter.getArtist(search);
     }
 
     @Override

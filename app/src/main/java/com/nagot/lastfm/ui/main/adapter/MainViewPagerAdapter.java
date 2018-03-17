@@ -92,7 +92,6 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
         for (int i = 0; i < fragments.size(); i++) {
             list.add(fragments.get(i).get());
         }
-
         return list;
     }
 }

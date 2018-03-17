@@ -17,8 +17,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ServiceGenerator {
-    //private static final String API_BASE_URL = "";
-    //private static Retrofit retrofit;
 
     private static Retrofit.Builder builder = new Retrofit.Builder()
             .baseUrl(ConstantsUtil.BASE_URL)
@@ -35,20 +33,8 @@ public class ServiceGenerator {
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .build();
 
-        /*Gson gson = new GsonBuilder()
-                .setLenient()
-                .create();*/
-
-        /*retrofit = new Retrofit.Builder()
-                .baseUrl(API_BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(client)
-                .build();*/
-
         Retrofit retrofit = builder.client(client).build();
 
         return retrofit.create(serviceClass);
-
     }
-
 }

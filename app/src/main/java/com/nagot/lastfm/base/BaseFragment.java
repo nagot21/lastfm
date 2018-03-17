@@ -29,5 +29,5 @@ public abstract class BaseFragment extends Fragment {
 
     protected abstract void setUp(View view);
 
-    protected abstract void search(String search);
+    public abstract void search(String search);
 }
