@@ -9,71 +9,47 @@ import java.util.List;
  */
 
 public class Artist {
-    @SerializedName("mbid")
-    private String mbid;
     @SerializedName("name")
     private String name;
-    @SerializedName("image")
-    private List<ImageItem> images;
-    @SerializedName("streamable")
-    private String streamable;
-    @SerializedName("playcount")
-    private String playCount;
+    @SerializedName("listeners")
+    private int listeners;
+    @SerializedName("mbid")
+    private String mbid;
     @SerializedName("url")
     private String url;
-
-    public String getMbid() {
-        return mbid;
-    }
-
-    public void setMbid(String mbid) {
-        this.mbid = mbid;
-    }
+    @SerializedName("streamable")
+    private int streamable;
+    @SerializedName("image")
+    private List<Image> imageList;
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getListeners() {
+        return listeners;
     }
 
-    public List<ImageItem> getImages() {
-        return images;
-    }
-
-    public void setImages(List<ImageItem> images) {
-        this.images = images;
-    }
-
-    public String getStreamable() {
-        return streamable;
-    }
-
-    public void setStreamable(String streamable) {
-        this.streamable = streamable;
-    }
-
-    public String getPlayCount() {
-        return playCount;
-    }
-
-    public void setPlayCount(String playCount) {
-        this.playCount = playCount;
+    public String getMbid() {
+        return mbid;
     }
 
     public String getUrl() {
         return url;
     }
 
-    public void setUrl(String url) {
-        this.url = url;
+    public int getStreamable() {
+        return streamable;
+    }
+
+    public List<Image> getImageList() {
+        return imageList;
     }
 
     public String getImageUrl(){
-        if (getImages() != null && getImages().size() > 0) {
-            for (ImageItem img :
-                    getImages()) {
+        if (getImageList() != null && getImageList().size() > 0) {
+            for (Image img :
+                    getImageList()) {
                 if (img.getSize().equalsIgnoreCase("large")) {
                     return img.getUrl();
                 }

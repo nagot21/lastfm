@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by IanNagot on 16/03/2018.
  */
 
-public class ImageItem {
+public class Image {
     @SerializedName("#text")
     private String url;
     @SerializedName("size")
