@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nagot.lastfm.R;
@@ -30,6 +31,10 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     ProgressBar mProgressBar;
     @BindView(R.id.empty_layout)
     View emptyLayout;
+    @BindView(R.id.search_layout)
+    View searchLayout;
+    @BindView(R.id.search_item_text)
+    TextView searchTextView;
     private ArtistsAdapter mAdapter;
     private View.OnClickListener mOnClickListener;
     private ArtistFragmentMvpPresenter<ArtistFragmentMvpView> mPresenter;
@@ -63,11 +68,15 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mPresenter.getArtist("Cher"); //TODO: FIX
+        searchLayout.setVisibility(View.VISIBLE);
+        searchTextView.setText(String.format(
+                getString(R.string.press_search), getString(R.string.artist)));
     }
 
     @Override
     public void search(String search) {
+        searchLayout.setVisibility(View.GONE);
+
         if (mAdapter != null) {
             mAdapter.clearItems();
         }
@@ -102,6 +111,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
 
     @Override
     public void updateData(List<Artist> artists) {
+
         if (mAdapter == null) {
             mAdapter = new ArtistsAdapter(artists, getContext(), mOnClickListener);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
