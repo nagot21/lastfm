@@ -14,6 +14,7 @@ import com.nagot.lastfm.model.Artist;
 import com.nagot.lastfm.ui.artist.adapter.ArtistsAdapter;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -44,7 +45,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
 
     @Override
     protected void setUp(View view) {
-        ButterKnife.bind(view);
+        ButterKnife.bind(this, view);
         mPresenter = new ArtistFragmentPresenter<>();
         mPresenter.onAttach(this);
 
@@ -62,7 +63,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mPresenter.getArtist(); //TODO: FIX
+        mPresenter.getArtist("Cher"); //TODO: FIX
     }
 
     @Override
@@ -82,7 +83,8 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
 
     @Override
     public void showError() {
-        Toast.makeText(getContext(), R.string.error_occurred, Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext(), R.string.error_occurred,
+                Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -96,10 +98,11 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     }
 
     @Override
-    public void updateData(ArrayList<Artist> artists) {
+    public void updateData(List<Artist> artists) {
         if (mAdapter == null) {
             mAdapter = new ArtistsAdapter(artists, getContext(), mOnClickListener);
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                    LinearLayoutManager.VERTICAL, false);
             artistsRecyclerView.setLayoutManager(linearLayoutManager);
             artistsRecyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();

@@ -7,10 +7,10 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class ArtistResponse {
-    @SerializedName("artistmatches")
-    private ArtistMatches artistMatches;
+    @SerializedName("results")
+    private Results results;
 
-    public ArtistMatches getArtistMatches() {
-        return artistMatches;
+    public Results getResults() {
+        return results;
     }
 }

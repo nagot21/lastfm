@@ -8,5 +8,5 @@ import com.nagot.lastfm.base.BaseMvpPresenter;
 
 public interface ArtistFragmentMvpPresenter<V extends ArtistFragmentMvpView> extends BaseMvpPresenter<V> {
 
-    void getArtist(String userName, String apiKey, int limit);
+    void getArtist(String artistName);
 }

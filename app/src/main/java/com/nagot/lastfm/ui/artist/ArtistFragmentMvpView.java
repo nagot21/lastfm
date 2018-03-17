@@ -4,6 +4,7 @@ import com.nagot.lastfm.base.BaseMvpView;
 import com.nagot.lastfm.model.Artist;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by IanNagot on 16/03/2018.
@@ -11,5 +12,5 @@ import java.util.ArrayList;
 
 public interface ArtistFragmentMvpView extends BaseMvpView {
 
-    void updateData(ArrayList<Artist> artists);
+    void updateData(List<Artist> artists);
 }

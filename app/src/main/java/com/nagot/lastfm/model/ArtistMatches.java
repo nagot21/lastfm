@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Nagot on 17/03/2018.
  */
 
-class ArtistMatches {
+public class ArtistMatches {
     @SerializedName("artist")
     private List<Artist> artistList;
 
