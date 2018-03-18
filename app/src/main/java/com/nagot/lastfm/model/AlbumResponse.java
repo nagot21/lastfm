@@ -6,11 +6,11 @@ import com.google.gson.annotations.SerializedName;
  * Created by Nagot on 17/03/2018.
  */
 
-public class ArtistResponse {
+public class AlbumResponse {
     @SerializedName("results")
-    private ArtistResults results;
+    private AlbumResults results;
 
-    public ArtistResults getResults() {
+    public AlbumResults getResults() {
         return results;
     }
 }

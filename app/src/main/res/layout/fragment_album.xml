@@ -1,0 +1,29 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/album_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ProgressBar
+        android:id="@+id/album_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:indeterminateTintMode="src_in"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/album_empty_layout"
+        layout="@layout/no_result"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/album_search_layout"
+        layout="@layout/search_item"
+        android:visibility="gone" />
+</FrameLayout>

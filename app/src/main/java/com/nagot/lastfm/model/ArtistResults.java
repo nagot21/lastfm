@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by Nagot on 17/03/2018.
  */
 
-public class Results {
+public class ArtistResults {
     @SerializedName("artistmatches")
     private ArtistMatches artistMatches;
 

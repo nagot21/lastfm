@@ -1,4 +1,4 @@
-package com.nagot.lastfm.ui.artist;
+package com.nagot.lastfm.ui.album;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import com.nagot.lastfm.R;
 import com.nagot.lastfm.base.BaseFragment;
-import com.nagot.lastfm.model.Artist;
-import com.nagot.lastfm.ui.artist.adapter.ArtistsAdapter;
+import com.nagot.lastfm.model.Album;
+import com.nagot.lastfm.ui.album.adapter.AlbumAdapter;
 
 import java.util.List;
 
@@ -20,46 +20,46 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
- * Created by IanNagot on 16/03/2018.
+ * Created by Nagot on 17/03/2018.
  */
 
-public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpView {
-    @BindView(R.id.artist_recycler_view)
-    RecyclerView artistsRecyclerView;
-    @BindView(R.id.artist_progress_bar)
+public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView {
+    @BindView(R.id.album_recycler_view)
+    RecyclerView albumRecyclerView;
+    @BindView(R.id.album_progress_bar)
     ProgressBar mProgressBar;
-    @BindView(R.id.empty_layout)
+    @BindView(R.id.album_empty_layout)
     View emptyLayout;
-    @BindView(R.id.search_layout)
+    @BindView(R.id.album_search_layout)
     View searchLayout;
     @BindView(R.id.search_item_text)
     TextView searchTextView;
-    private ArtistsAdapter mAdapter;
+    private AlbumAdapter mAdapter;
     private View.OnClickListener mOnClickListener;
-    private ArtistFragmentMvpPresenter<ArtistFragmentMvpView> mPresenter;
+    private AlbumFragmentMvpPresenter<AlbumFragmentMvpView> mPresenter;
 
-    public static ArtistFragment newInstance() {
-        return new ArtistFragment();
+    public static AlbumFragment newInstance() {
+        return new AlbumFragment();
     }
 
     @Override
     protected int getFragmentLayout() {
-        return R.layout.fragment_artist;
+        return R.layout.fragment_album;
     }
 
     @Override
     protected void setUp(View view) {
         ButterKnife.bind(this, view);
-        mPresenter = new ArtistFragmentPresenter<>();
+        mPresenter = new AlbumFragmentPresenter<>();
         mPresenter.onAttach(this);
 
         mOnClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int position = artistsRecyclerView.getChildLayoutPosition(view);
-                Artist artist = mAdapter.getItemByPosition(position);
+                int position = albumRecyclerView.getChildLayoutPosition(view);
+                Album album = mAdapter.getItemByPosition(position);
 
-                Toast.makeText(getContext(), artist.getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), album.getName(), Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -69,7 +69,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         super.onActivityCreated(savedInstanceState);
         searchLayout.setVisibility(View.VISIBLE);
         searchTextView.setText(String.format(
-                getString(R.string.press_search), getString(R.string.artist)));
+                getString(R.string.press_search), getString(R.string.album)));
     }
 
     @Override
@@ -79,7 +79,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         if (mAdapter != null) {
             mAdapter.clearItems();
         }
-        mPresenter.getArtist(search);
+        mPresenter.getAlbum(search);
     }
 
     @Override
@@ -109,17 +109,17 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     }
 
     @Override
-    public void updateData(List<Artist> artists) {
+    public void updateData(List<Album> albumList) {
 
         if (mAdapter == null) {
-            mAdapter = new ArtistsAdapter(artists, getContext(), mOnClickListener);
+            mAdapter = new AlbumAdapter(albumList, getContext(), mOnClickListener);
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
                     LinearLayoutManager.VERTICAL, false);
-            artistsRecyclerView.setLayoutManager(linearLayoutManager);
-            artistsRecyclerView.setAdapter(mAdapter);
+            albumRecyclerView.setLayoutManager(linearLayoutManager);
+            albumRecyclerView.setAdapter(mAdapter);
             mAdapter.notifyDataSetChanged();
         } else {
-            mAdapter.updateItems(artists);
+            mAdapter.updateItems(albumList);
         }
     }
 
@@ -128,10 +128,4 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         super.onDetach();
         mPresenter.onDetach();
     }
-
-    /*public interface OnFragmentItemClickListener{
-
-        void onItemClicked(Artist artist);
-
-    }*/
 }
