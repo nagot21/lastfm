@@ -12,5 +12,6 @@
     <string name="error_connection">Check your internet connection and try again</string>
     <string name="press_search">Tap on search to find an %1$s</string>
     <string name="album_by">Album by %1$s</string>
+    <string name="song_by">Song by %1$s</string>
     <string name="album_image">album image</string>
 </resources>

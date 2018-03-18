@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.nagot.lastfm.R;
 import com.nagot.lastfm.ui.album.AlbumFragment;
 import com.nagot.lastfm.ui.artist.ArtistFragment;
+import com.nagot.lastfm.ui.song.TrackFragment;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -49,11 +50,11 @@ public class MainViewPagerAdapter extends FragmentPagerAdapter {
                 fragments.put(position, new WeakReference<>(fr));
                 return fr;
             }
-            /*case SONGS_INDEX: {
-                Fragment fr = TopTracksFragment.newInstance();
+            case SONGS_INDEX: {
+                Fragment fr = TrackFragment.newInstance();
                 fragments.put(position, new WeakReference<>(fr));
                 return fr;
-            }*/
+            }
         }
         return new ArtistFragment();
     }
