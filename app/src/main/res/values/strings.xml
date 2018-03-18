@@ -20,4 +20,5 @@
     <string name="tracks">Tracks</string>
     <string name="wiki">Wiki</string>
     <string name="no_info">No information available</string>
+    <string name="track_number">%1$s - %2$s</string>
 </resources>

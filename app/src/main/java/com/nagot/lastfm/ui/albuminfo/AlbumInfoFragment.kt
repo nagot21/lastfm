@@ -1,11 +1,14 @@
 package com.nagot.lastfm.ui.albuminfo
 
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
 import android.widget.Toast
 import com.nagot.lastfm.R
 import com.nagot.lastfm.base.BaseFragment
 import com.nagot.lastfm.model.AlbumInfo
+import com.nagot.lastfm.model.AlbumTrack
+import com.nagot.lastfm.ui.albuminfo.adapter.AlbumInfoAdapter
 import com.nagot.lastfm.utils.ImageLoaderUtil
 import kotlinx.android.synthetic.main.fragment_album_info.*
 
@@ -15,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_album_info.*
 class AlbumInfoFragment : BaseFragment(), AlbumInfoFragmentMvpView {
 
     private lateinit var mPresenter: AlbumInfoFragmentPresenter<AlbumInfoFragmentMvpView>
+    private var mAdapter: AlbumInfoAdapter? = null
 
     companion object {
         fun newInstance(): AlbumInfoFragment {
@@ -62,25 +66,11 @@ class AlbumInfoFragment : BaseFragment(), AlbumInfoFragmentMvpView {
         album_info_empty_layout.visibility = View.GONE
     }
 
-   /* override fun updateData(artistInfo: ArtistInfo) {
-        artist_info_app_bar_layout.visibility = View.VISIBLE
-        artist_info_scroll_view.visibility = View.VISIBLE
-
-        ImageLoaderUtil.loadImage(context, artistInfo.imageUrl,
-                R.drawable.last_fm_logo, artist_info_artist_image)
-
-        artist_info_collapsing_toolbar_layout.title = artistInfo.name
-
-        artist_info_bio.text = if(!artistInfo.artistBiography.content.isBlank()){
-            artistInfo.artistBiography.content
-        } else {
-            artistInfo.artistBiography.summary
-        }
-    }*/
-
     override fun updateData(albumInfo: AlbumInfo) {
-        album_info_app_bar_layout.visibility = View.VISIBLE
+        prepareAdapter(albumInfo.tracks.albumTrackList)
+
         album_info_scroll_view.visibility = View.VISIBLE
+        album_info_app_bar_layout.visibility = View.VISIBLE
 
         ImageLoaderUtil.loadImage(context, albumInfo.imageUrl,
                 R.drawable.last_fm_logo, album_info_artist_image)
@@ -104,6 +94,16 @@ class AlbumInfoFragment : BaseFragment(), AlbumInfoFragmentMvpView {
                 .supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         album_info_toolbar.setNavigationOnClickListener { activity.onBackPressed() }
+    }
+
+    private fun prepareAdapter(albumTrackList: List<AlbumTrack>){
+        if (mAdapter == null){
+            mAdapter = AlbumInfoAdapter(albumTrackList)
+            val linearLayoutManager = LinearLayoutManager(context,
+                    LinearLayoutManager.VERTICAL, false)
+            album_info_recycler_view.layoutManager = linearLayoutManager
+            album_info_recycler_view.adapter = mAdapter
+        }
     }
 
     override fun onDetach() {
