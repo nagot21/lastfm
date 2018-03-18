@@ -62,6 +62,9 @@ class ArtistInfoFragment : BaseFragment(), ArtistInfoFragmentMvpView {
     }
 
     override fun updateData(artistInfo: ArtistInfo) {
+        artist_info_app_bar_layout.visibility = View.VISIBLE
+        artist_info_scroll_view.visibility = View.VISIBLE
+
         ImageLoaderUtil.loadImage(context, artistInfo.imageUrl,
                 R.drawable.last_fm_logo, artist_info_artist_image)
 
