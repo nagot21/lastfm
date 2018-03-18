@@ -1,5 +1,6 @@
 package com.nagot.lastfm.data.retrofit.service;
 
+import com.nagot.lastfm.model.ArtistInfoResponse;
 import com.nagot.lastfm.model.ArtistResponse;
 
 import io.reactivex.Single;
@@ -14,4 +15,8 @@ public interface ArtistService {
     @GET("?method=artist.search&format=json")
     Single<ArtistResponse> getArtists(@Query("artist") String artist,
                                       @Query("api_key") String apiKey);
+
+    @GET("?method=artist.getinfo&format=json")
+    Single<ArtistInfoResponse> getArtistInfo(@Query("mbid") String mbid,
+                                             @Query("api_key") String apiKey);
 }
