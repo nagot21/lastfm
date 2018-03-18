@@ -1,5 +1,6 @@
 package com.nagot.lastfm.ui.main;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.support.annotation.Nullable;
@@ -17,8 +18,10 @@ import com.nagot.lastfm.R;
 import com.nagot.lastfm.base.BaseFragment;
 import com.nagot.lastfm.ui.album.AlbumFragment;
 import com.nagot.lastfm.ui.artist.ArtistFragment;
+import com.nagot.lastfm.ui.info.InfoActivity;
 import com.nagot.lastfm.ui.main.adapter.MainViewPagerAdapter;
 import com.nagot.lastfm.ui.track.TrackFragment;
+import com.nagot.lastfm.utils.ConstantsUtil;
 import com.nagot.lastfm.utils.KeyboardUtil;
 
 import butterknife.BindView;
@@ -78,18 +81,25 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    private void goToNextActivity(String info, String fragmentName) {
+        Intent intent = new Intent(MainActivity.this, InfoActivity.class);
+        intent.putExtra("info", info);
+        intent.putExtra("fragment", fragmentName);
+        startActivity(intent);
+    }
+
     @Override
     public void onArtistItemClicked(String artistName) {
-        Toast.makeText(this, artistName, Toast.LENGTH_SHORT).show();
+        goToNextActivity(artistName, ConstantsUtil.ARTIST);
     }
 
     @Override
     public void onAlbumItemClicked(String albumName) {
-        Toast.makeText(this, albumName, Toast.LENGTH_SHORT).show();
+        goToNextActivity(albumName, ConstantsUtil.ALBUM);
     }
 
     @Override
     public void onTrackItemClicked(String trackName) {
-        Toast.makeText(this, trackName, Toast.LENGTH_SHORT).show();
+        goToNextActivity(trackName, ConstantsUtil.TRACK);
     }
 }
