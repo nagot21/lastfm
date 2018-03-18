@@ -62,7 +62,7 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
                 int position = songRecyclerView.getChildLayoutPosition(view);
                 Track track = mAdapter.getItemByPosition(position);
 
-                mOnItemSelectedListener.onTrackItemClicked(track.getName());
+                mOnItemSelectedListener.onTrackItemClicked(track.getName(), track.getArtist());
             }
         };
     }
@@ -146,7 +146,7 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
 
     public interface OnItemSelectedListener {
 
-        void onTrackItemClicked(String trackName);
+        void onTrackItemClicked(String trackName, String artistName);
 
     }
 }

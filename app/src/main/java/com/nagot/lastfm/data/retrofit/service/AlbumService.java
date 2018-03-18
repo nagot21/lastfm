@@ -18,5 +18,6 @@ public interface AlbumService {
 
     @GET("?method=album.getinfo&format=json")
     Single<AlbumInfoResponse> getAlbumInfo(@Query("album") String album,
+                                           @Query("artist") String artist,
                                            @Query("api_key") String apiKey);
 }

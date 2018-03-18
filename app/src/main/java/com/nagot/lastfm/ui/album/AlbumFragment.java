@@ -62,7 +62,7 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
                 int position = albumRecyclerView.getChildLayoutPosition(view);
                 Album album = mAdapter.getItemByPosition(position);
 
-                mOnItemSelectedListener.onAlbumItemClicked(album.getName());
+                mOnItemSelectedListener.onAlbumItemClicked(album.getName(), album.getArtist());
             }
         };
     }
@@ -146,7 +146,7 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
 
     public interface OnItemSelectedListener {
 
-        void onAlbumItemClicked(String albumName);
+        void onAlbumItemClicked(String albumName, String artistName);
 
     }
 }

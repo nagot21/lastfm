@@ -1,0 +1,134 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorCrimson">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/album_info_app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?colorPrimary"
+        android:visibility="visible">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/album_info_collapsing_toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:collapsedTitleTextAppearance="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:contentScrim="?attr/colorPrimary"
+            app:expandedTitleGravity="center|bottom"
+            app:expandedTitleMarginBottom="@dimen/marge20"
+            app:expandedTitleTextAppearance="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/album_info_artist_image"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/marge250"
+                android:scaleType="centerCrop"
+                app:layout_collapseMode="parallax" />
+
+            <View
+                android:id="@+id/album_info_transparency"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_gravity="bottom"
+                android:background="@color/colorGreyTransparency" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/album_info_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStart="@dimen/marge72"
+                app:layout_collapseMode="pin">
+
+            </android.support.v7.widget.Toolbar>
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <ProgressBar
+        android:id="@+id/album_info_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:indeterminate="true"
+        android:indeterminateTint="@android:color/white"
+        android:indeterminateTintMode="src_in"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/album_info_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:nestedScrollingEnabled="true"
+        android:visibility="visible"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/marge10"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/album_info_name_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marge20"
+                android:text="@string/album_by"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_text_size_large"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/album_info_tracks_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/album_info_name_title"
+                android:padding="@dimen/marge20"
+                android:text="@string/tracks"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_text_size_medium" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/album_info_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/album_info_tracks_label"
+                android:padding="@dimen/marge20" />
+
+            <TextView
+                android:id="@+id/album_info_wiki_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/album_info_recycler_view"
+                android:padding="@dimen/marge20"
+                android:text="@string/wiki"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/title_text_size_medium" />
+
+            <TextView
+                android:id="@+id/album_info_wiki_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/album_info_wiki_label"
+                android:layout_marginBottom="@dimen/marge20"
+                android:padding="@dimen/marge20"
+                android:textSize="@dimen/title_text_size_medium" />
+
+            <include
+                android:id="@+id/album_info_empty_layout"
+                layout="@layout/no_result"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

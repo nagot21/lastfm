@@ -81,25 +81,28 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
-    private void goToNextActivity(String info, String fragmentName) {
+    private void goToNextActivity(String artistName, String artistAlbum, String track,
+                                  String fragmentName) {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-        intent.putExtra("info", info);
+        intent.putExtra("artist", artistName);
+        intent.putExtra("album", artistAlbum);
+        intent.putExtra("track", track);
         intent.putExtra("fragment", fragmentName);
         startActivity(intent);
     }
 
     @Override
     public void onArtistItemClicked(String artistName) {
-        goToNextActivity(artistName, ConstantsUtil.ARTIST);
+        goToNextActivity(artistName, "", "", ConstantsUtil.ARTIST);
     }
 
     @Override
-    public void onAlbumItemClicked(String albumName) {
-        goToNextActivity(albumName, ConstantsUtil.ALBUM);
+    public void onAlbumItemClicked(String albumName, String artistName) {
+        goToNextActivity(artistName, albumName, "", ConstantsUtil.ALBUM);
     }
 
     @Override
-    public void onTrackItemClicked(String trackName) {
-        goToNextActivity(trackName, ConstantsUtil.TRACK);
+    public void onTrackItemClicked(String trackName, String artistName) {
+        goToNextActivity(artistName, "", trackName, ConstantsUtil.TRACK);
     }
 }
