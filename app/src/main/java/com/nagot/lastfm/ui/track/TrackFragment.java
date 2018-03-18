@@ -1,5 +1,6 @@
-package com.nagot.lastfm.ui.song;
+package com.nagot.lastfm.ui.track;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +13,8 @@ import android.widget.Toast;
 import com.nagot.lastfm.R;
 import com.nagot.lastfm.base.BaseFragment;
 import com.nagot.lastfm.model.Track;
-import com.nagot.lastfm.ui.song.adapter.TrackAdapter;
+import com.nagot.lastfm.ui.artist.ArtistFragment;
+import com.nagot.lastfm.ui.track.adapter.TrackAdapter;
 
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
     private TrackAdapter mAdapter;
     private View.OnClickListener mOnClickListener;
     private TrackFragmentMvpPresenter<TrackFragmentMvpView> mPresenter;
+    private OnItemSelectedListener mOnItemSelectedListener;
 
     public static TrackFragment newInstance() {
         return new TrackFragment();
@@ -59,7 +62,7 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
                 int position = songRecyclerView.getChildLayoutPosition(view);
                 Track track = mAdapter.getItemByPosition(position);
 
-                Toast.makeText(getContext(), track.getName(), Toast.LENGTH_SHORT).show();
+                mOnItemSelectedListener.onTrackItemClicked(track.getName());
             }
         };
     }
@@ -70,6 +73,18 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
         searchLayout.setVisibility(View.VISIBLE);
         searchTextView.setText(String.format(
                 getString(R.string.press_search), getString(R.string.song)));
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof TrackFragment.OnItemSelectedListener) {
+            mOnItemSelectedListener = (TrackFragment.OnItemSelectedListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " interface must be implemented");
+        }
     }
 
     @Override
@@ -127,5 +142,11 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
     public void onDetach() {
         super.onDetach();
         mPresenter.onDetach();
+    }
+
+    public interface OnItemSelectedListener {
+
+        void onTrackItemClicked(String trackName);
+
     }
 }

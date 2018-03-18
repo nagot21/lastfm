@@ -17,6 +17,6 @@ public interface ArtistService {
                                       @Query("api_key") String apiKey);
 
     @GET("?method=artist.getinfo&format=json")
-    Single<ArtistInfoResponse> getArtistInfo(@Query("mbid") String mbid,
+    Single<ArtistInfoResponse> getArtistInfo(@Query("artist") String artist,
                                              @Query("api_key") String apiKey);
 }

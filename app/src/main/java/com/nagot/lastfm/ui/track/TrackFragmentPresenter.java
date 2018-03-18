@@ -1,4 +1,4 @@
-package com.nagot.lastfm.ui.song;
+package com.nagot.lastfm.ui.track;
 
 import com.nagot.lastfm.data.retrofit.ServiceGenerator;
 import com.nagot.lastfm.data.retrofit.service.TrackService;

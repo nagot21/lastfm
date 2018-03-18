@@ -1,5 +1,6 @@
 package com.nagot.lastfm.ui.artist;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -37,6 +38,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
     private ArtistsAdapter mAdapter;
     private View.OnClickListener mOnClickListener;
     private ArtistFragmentMvpPresenter<ArtistFragmentMvpView> mPresenter;
+    private OnItemSelectedListener mOnItemSelectedListener;
 
     public static ArtistFragment newInstance() {
         return new ArtistFragment();
@@ -59,7 +61,7 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
                 int position = artistsRecyclerView.getChildLayoutPosition(view);
                 Artist artist = mAdapter.getItemByPosition(position);
 
-                Toast.makeText(getContext(), artist.getName(), Toast.LENGTH_SHORT).show();
+                mOnItemSelectedListener.onArtistItemClicked(artist.getName());
             }
         };
     }
@@ -70,6 +72,18 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         searchLayout.setVisibility(View.VISIBLE);
         searchTextView.setText(String.format(
                 getString(R.string.press_search), getString(R.string.artist)));
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof OnItemSelectedListener) {
+            mOnItemSelectedListener = (OnItemSelectedListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " interface must be implemented");
+        }
     }
 
     @Override
@@ -129,9 +143,9 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         mPresenter.onDetach();
     }
 
-    /*public interface OnFragmentItemClickListener{
+    public interface OnItemSelectedListener {
 
-        void onItemClicked(Artist artist);
+        void onArtistItemClicked(String artistName);
 
-    }*/
+    }
 }

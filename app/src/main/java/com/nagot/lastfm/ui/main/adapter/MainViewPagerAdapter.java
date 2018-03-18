@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import com.nagot.lastfm.R;
 import com.nagot.lastfm.ui.album.AlbumFragment;
 import com.nagot.lastfm.ui.artist.ArtistFragment;
-import com.nagot.lastfm.ui.song.TrackFragment;
+import com.nagot.lastfm.ui.track.TrackFragment;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;

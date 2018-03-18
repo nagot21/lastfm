@@ -11,10 +11,14 @@ import android.text.TextUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nagot.lastfm.R;
 import com.nagot.lastfm.base.BaseFragment;
+import com.nagot.lastfm.ui.album.AlbumFragment;
+import com.nagot.lastfm.ui.artist.ArtistFragment;
 import com.nagot.lastfm.ui.main.adapter.MainViewPagerAdapter;
+import com.nagot.lastfm.ui.track.TrackFragment;
 import com.nagot.lastfm.utils.KeyboardUtil;
 
 import butterknife.BindView;
@@ -25,7 +29,10 @@ import butterknife.OnEditorAction;
  * Created by IanNagot on 16/03/2018.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+        implements ArtistFragment.OnItemSelectedListener,
+        AlbumFragment.OnItemSelectedListener, TrackFragment.OnItemSelectedListener{
+
     @BindView(R.id.main_tab_layout)
     TabLayout mTabLayout;
     @BindView(R.id.main_viewpager)
@@ -69,5 +76,20 @@ public class MainActivity extends AppCompatActivity {
                 ((BaseFragment) fragment).search(userName);
             }
         }
+    }
+
+    @Override
+    public void onArtistItemClicked(String artistName) {
+        Toast.makeText(this, artistName, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onAlbumItemClicked(String albumName) {
+        Toast.makeText(this, albumName, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onTrackItemClicked(String trackName) {
+        Toast.makeText(this, trackName, Toast.LENGTH_SHORT).show();
     }
 }

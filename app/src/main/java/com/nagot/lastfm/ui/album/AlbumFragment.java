@@ -1,5 +1,6 @@
 package com.nagot.lastfm.ui.album;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import com.nagot.lastfm.R;
 import com.nagot.lastfm.base.BaseFragment;
 import com.nagot.lastfm.model.Album;
 import com.nagot.lastfm.ui.album.adapter.AlbumAdapter;
+import com.nagot.lastfm.ui.artist.ArtistFragment;
 
 import java.util.List;
 
@@ -37,6 +39,7 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
     private AlbumAdapter mAdapter;
     private View.OnClickListener mOnClickListener;
     private AlbumFragmentMvpPresenter<AlbumFragmentMvpView> mPresenter;
+    private OnItemSelectedListener mOnItemSelectedListener;
 
     public static AlbumFragment newInstance() {
         return new AlbumFragment();
@@ -59,7 +62,7 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
                 int position = albumRecyclerView.getChildLayoutPosition(view);
                 Album album = mAdapter.getItemByPosition(position);
 
-                Toast.makeText(getContext(), album.getName(), Toast.LENGTH_SHORT).show();
+                mOnItemSelectedListener.onAlbumItemClicked(album.getName());
             }
         };
     }
@@ -70,6 +73,18 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
         searchLayout.setVisibility(View.VISIBLE);
         searchTextView.setText(String.format(
                 getString(R.string.press_search), getString(R.string.album)));
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        if (context instanceof AlbumFragment.OnItemSelectedListener) {
+            mOnItemSelectedListener = (AlbumFragment.OnItemSelectedListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " interface must be implemented");
+        }
     }
 
     @Override
@@ -127,5 +142,11 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
     public void onDetach() {
         super.onDetach();
         mPresenter.onDetach();
+    }
+
+    public interface OnItemSelectedListener {
+
+        void onAlbumItemClicked(String albumName);
+
     }
 }

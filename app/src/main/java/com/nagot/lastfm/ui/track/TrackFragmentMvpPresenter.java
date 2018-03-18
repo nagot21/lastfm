@@ -1,4 +1,4 @@
-package com.nagot.lastfm.ui.song;
+package com.nagot.lastfm.ui.track;
 
 import com.nagot.lastfm.base.BaseMvpPresenter;
 
