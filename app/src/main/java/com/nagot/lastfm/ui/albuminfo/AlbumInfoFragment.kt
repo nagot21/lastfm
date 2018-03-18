@@ -87,10 +87,13 @@ class AlbumInfoFragment : BaseFragment(), AlbumInfoFragmentMvpView {
 
         album_info_collapsing_toolbar_layout.title = albumInfo.name
 
-        album_info_wiki_text.text = if(!albumInfo.wiki.content.isBlank()){
+        album_info_name_title.text = String.format(context.getString(R.string.album_by),
+                albumInfo.artist)
+
+        album_info_wiki_text.text = if(albumInfo.wiki != null && !albumInfo.wiki.content.isBlank()){
             albumInfo.wiki.content
         } else {
-            albumInfo.wiki.summary
+            context.getText(R.string.no_info)
         }
     }
 
