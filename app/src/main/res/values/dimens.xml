@@ -4,6 +4,7 @@
     <dimen name="marge10">10dp</dimen>
     <dimen name="marge20">20dp</dimen>
     <dimen name="marge40">40dp</dimen>
+    <dimen name="marge50">50dp</dimen>
     <dimen name="marge72">72dp</dimen>
     <dimen name="marge100">100dp</dimen>
     <dimen name="marge150">150dp</dimen>

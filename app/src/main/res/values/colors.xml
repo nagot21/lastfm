@@ -6,4 +6,5 @@
 
     <color name="colorGrey">#6d6969</color>
     <color name="colorCrimson">#B00012</color>
+    <color name="colorGreyTransparency">#996d6969</color>
 </resources>

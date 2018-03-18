@@ -32,7 +32,7 @@ class InfoActivity : AppCompatActivity() {
         supportFragmentManager
                 .beginTransaction()
                 .add(R.id.info_frame_layout,
-                        ArtistInfoFragment.newInstance(),
+                        fragment,
                         ConstantsUtil.ARTIST)
                 .commit()
     }

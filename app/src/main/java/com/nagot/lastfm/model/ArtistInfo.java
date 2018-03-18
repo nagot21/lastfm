@@ -16,7 +16,7 @@ public class ArtistInfo {
     @SerializedName("similar")
     private Similar similar;
     @SerializedName("tags")
-    private List<Tag> tagList;
+    private Tags tags;
     @SerializedName("bio")
     private ArtistBiography artistBiography;
 
@@ -32,8 +32,8 @@ public class ArtistInfo {
         return similar;
     }
 
-    public List<Tag> getTagList() {
-        return tagList;
+    public Tags getTags() {
+        return tags;
     }
 
     public ArtistBiography getArtistBiography() {
@@ -42,9 +42,9 @@ public class ArtistInfo {
 
     public String getImageUrl(){
         if (getImageList() != null && getImageList().size() > 0) {
-            for (Image img :
-                    getImageList()) {
-                if (img.getSize().equalsIgnoreCase("large")) {
+            for (Image img : getImageList()) {
+                if (img.getSize().equals("extralarge") || img.getSize().equals("mega") ||
+                        img.getSize().equals("")) {
                     return img.getUrl();
                 }
             }

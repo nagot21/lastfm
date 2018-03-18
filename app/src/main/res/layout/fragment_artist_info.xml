@@ -14,17 +14,17 @@
             android:id="@+id/artist_info_collapsing_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:collapsedTitleTextAppearance="@style/ThemeOverlay.AppCompat"
+            app:collapsedTitleTextAppearance="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleGravity="center|bottom"
             app:expandedTitleMarginBottom="@dimen/marge20"
-            app:expandedTitleTextAppearance="@style/ThemeOverlay.AppCompat"
+            app:expandedTitleTextAppearance="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <ImageView
                 android:id="@+id/artist_info_artist_image"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/marge150"
+                android:layout_height="200dp"
                 android:scaleType="centerCrop"
                 app:layout_collapseMode="parallax" />
 
@@ -33,13 +33,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_gravity="bottom"
-                android:background="@android:color/transparent" />
+                android:background="@color/colorGreyTransparency" />
 
             <android.support.v7.widget.Toolbar
-                android:id="@+id/region_toolbar"
+                android:id="@+id/artist_info_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:contentInsetStart="@dimen/marge72"
                 app:layout_collapseMode="pin">
 
@@ -61,58 +61,80 @@
             android:layout_margin="@dimen/marge10"
             android:background="@color/colorPrimary">
 
+            <ProgressBar
+                android:id="@+id/artist_info_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:indeterminateTint="@android:color/white"
+                android:indeterminateTintMode="src_in"
+                android:visibility="gone" />
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:id="@+id/artist_info_bio_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/marge20"
+                android:text="@string/bio"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/artist_info_bio"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/marge10"
-                android:textSize="@dimen/title_text_size_large" />
+                android:layout_below="@+id/artist_info_bio_title"
+                android:padding="@dimen/marge20"
+                android:textSize="@dimen/title_text_size_medium" />
 
-            <LinearLayout
-                android:id="@+id/artist_info_similar_container"
-                android:layout_width="match_parent"
+            <TextView
+                android:textColor="@android:color/white"
+                android:id="@+id/artist_info_similar_artist_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/artist_info_bio"
-                android:orientation="horizontal">
+                android:padding="@dimen/marge20"
+                android:text="@string/similar_artists"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/marge10"
-                    android:text="@string/similar_artists" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/artist_info_similar_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/marge40"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/marge10" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/artist_info_tags_container"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/artist_info_similar_recycler_view"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/marge50"
+                android:layout_below="@+id/artist_info_similar_artist_label"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/marge20"
+                android:layout_marginLeft="@dimen/marge20"
+                android:layout_marginRight="@dimen/marge20"
+                android:layout_marginStart="@dimen/marge20"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:textColor="@android:color/white"
+                android:id="@+id/artist_info_tags_label"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/artist_info_similar_container"
-                android:orientation="horizontal">
+                android:layout_below="@+id/artist_info_similar_recycler_view"
+                android:padding="@dimen/marge20"
+                android:text="@string/tags"
+                android:textAllCaps="true"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/marge10"
-                    android:text="@string/tags" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/artist_info_tags_recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/marge40"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal"
-                    android:padding="@dimen/marge10" />
-
-            </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/artist_info_tags_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/marge50"
+                android:layout_below="@+id/artist_info_tags_label"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/marge20"
+                android:layout_marginLeft="@dimen/marge20"
+                android:layout_marginRight="@dimen/marge20"
+                android:layout_marginStart="@dimen/marge20"
+                android:orientation="horizontal" />
 
             <include
                 android:id="@+id/artist_info_empty_layout"
