@@ -1,6 +1,5 @@
 package com.nagot.lastfm.ui.artistinfo
 
-import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
@@ -75,9 +74,6 @@ class ArtistInfoFragment : BaseFragment(), ArtistInfoFragmentMvpView {
         } else {
             artistInfo.artistBiography.summary
         }
-
-
-
     }
 
     private fun prepareToolbar(){
