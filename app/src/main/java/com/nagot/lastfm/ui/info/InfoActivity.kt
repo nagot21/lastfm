@@ -6,6 +6,7 @@ import com.nagot.lastfm.R
 import com.nagot.lastfm.base.BaseFragment
 import com.nagot.lastfm.ui.albuminfo.AlbumInfoFragment
 import com.nagot.lastfm.ui.artistinfo.ArtistInfoFragment
+import com.nagot.lastfm.ui.trackinfo.TrackInfoFragment
 import com.nagot.lastfm.utils.ConstantsUtil
 
 class InfoActivity : AppCompatActivity() {
@@ -38,7 +39,7 @@ class InfoActivity : AppCompatActivity() {
             }
             else -> {
                 bundle.putString("track", track)
-                AlbumInfoFragment.newInstance()
+                TrackInfoFragment.newInstance()
             }
         }
 

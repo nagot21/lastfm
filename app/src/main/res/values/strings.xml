@@ -21,4 +21,6 @@
     <string name="wiki">Wiki</string>
     <string name="no_info">No information available</string>
     <string name="track_number">%1$s - %2$s</string>
+    <string name="from_album">From album %1$s</string>
+    <string name="artist_by">by %1$s</string>
 </resources>
