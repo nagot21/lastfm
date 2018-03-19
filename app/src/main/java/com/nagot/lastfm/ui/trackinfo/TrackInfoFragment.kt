@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.nagot.lastfm.R
 import com.nagot.lastfm.base.BaseFragment
 import com.nagot.lastfm.model.TrackInfo
+import com.nagot.lastfm.utils.ConstantsUtil
 import com.nagot.lastfm.utils.ImageLoaderUtil
 import kotlinx.android.synthetic.main.fragment_track_info.*
 
@@ -13,6 +14,13 @@ import kotlinx.android.synthetic.main.fragment_track_info.*
  * Created by Nagot on 18/03/2018.
  */
 class TrackInfoFragment : BaseFragment(), TrackInfoFragmentMvpView {
+
+    /*
+    * This class initially would present more information like the duration of the track,
+    * listeners, play count and tags but since the time to build a proper layout would take time
+    * I preferred to build something clean with a nice visual.
+    *
+    * */
 
     private lateinit var mPresenter: TrackInfoFragmentPresenter<TrackInfoFragmentMvpView>
 
@@ -30,8 +38,8 @@ class TrackInfoFragment : BaseFragment(), TrackInfoFragmentMvpView {
         mPresenter = TrackInfoFragmentPresenter()
         mPresenter.onAttach(this)
 
-        val artist = arguments.getString("artist")
-        val track = arguments.getString("track")
+        val artist = arguments.getString(ConstantsUtil.ARTIST)
+        val track = arguments.getString(ConstantsUtil.TRACK)
 
         prepareToolbar()
 

@@ -6,6 +6,7 @@ import android.widget.Toast
 import com.nagot.lastfm.R
 import com.nagot.lastfm.base.BaseFragment
 import com.nagot.lastfm.model.ArtistInfo
+import com.nagot.lastfm.utils.ConstantsUtil
 import com.nagot.lastfm.utils.ImageLoaderUtil
 import kotlinx.android.synthetic.main.fragment_artist_info.*
 
@@ -13,6 +14,13 @@ import kotlinx.android.synthetic.main.fragment_artist_info.*
  * Created by Nagot on 18/03/2018.
  */
 class ArtistInfoFragment : BaseFragment(), ArtistInfoFragmentMvpView {
+
+    /*
+    * This class initially would present more information like similar artists and tags but since
+    * the time to build a proper layout would take time I preferred to build something clean with a
+    * nice visual.
+    * */
+
     private lateinit var mPresenter: ArtistInfoFragmentPresenter<ArtistInfoFragmentMvpView>
 
     companion object {
@@ -29,7 +37,7 @@ class ArtistInfoFragment : BaseFragment(), ArtistInfoFragmentMvpView {
         mPresenter = ArtistInfoFragmentPresenter()
         mPresenter.onAttach(this)
 
-        val artistName = arguments.getString("artist")
+        val artistName = arguments.getString(ConstantsUtil.ARTIST)
 
         prepareToolbar()
 

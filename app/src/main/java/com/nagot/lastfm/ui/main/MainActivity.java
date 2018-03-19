@@ -36,6 +36,16 @@ public class MainActivity extends AppCompatActivity
         implements ArtistFragment.OnItemSelectedListener,
         AlbumFragment.OnItemSelectedListener, TrackFragment.OnItemSelectedListener{
 
+    /*
+    * The project was developed using MVP Pattern, Java for the search part which consists in:
+    * Artists, Albums and Songs.
+    *
+    * All the call for the Last.Fm api were made using Retrofit2 in combination with Rxjava2.
+    *
+    * I didn't have enough time to implement Dagger2 nor TDD to the project since I was short in time
+    * to do so and also for my little experience with both libraries.
+    * */
+
     @BindView(R.id.main_tab_layout)
     TabLayout mTabLayout;
     @BindView(R.id.main_viewpager)
@@ -84,10 +94,10 @@ public class MainActivity extends AppCompatActivity
     private void goToNextActivity(String artistName, String artistAlbum, String track,
                                   String fragmentName) {
         Intent intent = new Intent(MainActivity.this, InfoActivity.class);
-        intent.putExtra("artist", artistName);
-        intent.putExtra("album", artistAlbum);
-        intent.putExtra("track", track);
-        intent.putExtra("fragment", fragmentName);
+        intent.putExtra(ConstantsUtil.ARTIST, artistName);
+        intent.putExtra(ConstantsUtil.ALBUM, artistAlbum);
+        intent.putExtra(ConstantsUtil.TRACK, track);
+        intent.putExtra(ConstantsUtil.FRAGMENT, fragmentName);
         startActivity(intent);
     }
 

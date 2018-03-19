@@ -10,5 +10,6 @@ public class ConstantsUtil {
     public static String ARTIST = "artist";
     public static String ALBUM = "album";
     public static String TRACK = "track";
+    public static String FRAGMENT = "fragment";
 
 }
