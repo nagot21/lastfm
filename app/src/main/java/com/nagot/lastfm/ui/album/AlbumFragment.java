@@ -138,12 +138,6 @@ public class AlbumFragment extends BaseFragment implements AlbumFragmentMvpView 
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mPresenter.onDetach();
-    }
-
     public interface OnItemSelectedListener {
 
         void onAlbumItemClicked(String albumName, String artistName);

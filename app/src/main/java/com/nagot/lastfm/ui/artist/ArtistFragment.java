@@ -137,12 +137,6 @@ public class ArtistFragment extends BaseFragment implements ArtistFragmentMvpVie
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mPresenter.onDetach();
-    }
-
     public interface OnItemSelectedListener {
 
         void onArtistItemClicked(String artistName);

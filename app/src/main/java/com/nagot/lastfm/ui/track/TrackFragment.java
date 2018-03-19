@@ -138,12 +138,6 @@ public class TrackFragment extends BaseFragment implements TrackFragmentMvpView 
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mPresenter.onDetach();
-    }
-
     public interface OnItemSelectedListener {
 
         void onTrackItemClicked(String trackName, String artistName);

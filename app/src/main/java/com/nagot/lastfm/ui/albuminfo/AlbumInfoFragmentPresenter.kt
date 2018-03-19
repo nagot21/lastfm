@@ -19,10 +19,6 @@ class AlbumInfoFragmentPresenter<V : AlbumInfoFragmentMvpView> : AlbumInfoFragme
         this.mView = view
     }
 
-    override fun onDetach() {
-        mView //TODO: FIX
-    }
-
     override fun getAlbumInfo(albumName: String, artistName: String) {
         disposeRequest()
         mView.showProgress()

@@ -32,11 +32,6 @@ public class AlbumFragmentPresenter<V extends AlbumFragmentMvpView>
     }
 
     @Override
-    public void onDetach() {
-        mView = null;
-    }
-
-    @Override
     public void getAlbum(String albumName) {
         disposeRequest();
         mView.showProgress();

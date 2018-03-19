@@ -8,5 +8,4 @@ public interface BaseMvpPresenter<V extends BaseMvpView> {
 
     void onAttach(V view);
 
-    void onDetach();
 }

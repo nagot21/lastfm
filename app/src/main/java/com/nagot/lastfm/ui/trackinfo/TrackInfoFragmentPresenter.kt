@@ -19,10 +19,6 @@ class TrackInfoFragmentPresenter<V : TrackInfoFragmentMvpView> : TrackInfoFragme
         this.mView = view
     }
 
-    override fun onDetach() {
-        mView //TODO: FIX
-    }
-
     override fun getTrackInfo(trackName: String, artistName: String) {
         disposeRequest()
         mView.showProgress()

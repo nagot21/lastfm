@@ -32,11 +32,6 @@ public class ArtistFragmentPresenter<V extends ArtistFragmentMvpView>
     }
 
     @Override
-    public void onDetach() {
-        mView = null;
-    }
-
-    @Override
     public void getArtist(String artistName) {
         disposeRequest();
         mView.showProgress();

@@ -84,9 +84,4 @@ class ArtistInfoFragment : BaseFragment(), ArtistInfoFragmentMvpView {
 
         artist_info_toolbar.setNavigationOnClickListener { activity.onBackPressed() }
     }
-
-    override fun onDetach() {
-        super.onDetach()
-        mPresenter.onDetach()
-    }
 }

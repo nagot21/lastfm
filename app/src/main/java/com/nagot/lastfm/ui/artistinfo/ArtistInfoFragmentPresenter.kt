@@ -24,10 +24,6 @@ class ArtistInfoFragmentPresenter<V : ArtistInfoFragmentMvpView> : ArtistInfoFra
         this.mView = view
     }
 
-    override fun onDetach() {
-        mView //TODO: FIX
-    }
-
     override fun getArtistInfo(artistName: String) {
         disposeRequest()
         mView.showProgress()

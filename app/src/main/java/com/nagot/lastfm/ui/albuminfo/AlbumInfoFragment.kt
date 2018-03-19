@@ -105,9 +105,4 @@ class AlbumInfoFragment : BaseFragment(), AlbumInfoFragmentMvpView {
             album_info_recycler_view.adapter = mAdapter
         }
     }
-
-    override fun onDetach() {
-        super.onDetach()
-        mPresenter.onDetach()
-    }
 }

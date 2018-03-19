@@ -32,11 +32,6 @@ public class TrackFragmentPresenter<V extends TrackFragmentMvpView>
     }
 
     @Override
-    public void onDetach() {
-        mView = null;
-    }
-
-    @Override
     public void getTrack(String trackName) {
         disposeRequest();
         mView.showProgress();
